@@ -19,7 +19,7 @@
 
 ## Custom Config
 
-![config](https://github.com/Mengzuozhu/annotation-tool/blob/main/demo/config.jpg)
+![config](https://github.com/Mengzuozhu/annotation-tool/blob/main/demo/config.png)
 
 ## Reference
 
