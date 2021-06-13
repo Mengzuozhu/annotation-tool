@@ -1,0 +1,44 @@
+<idea-plugin>
+    <id>github.mengzz.annotation-tool</id>
+    <name>Annotation Tool</name>
+    <vendor email="863561164@qq.com" url="https://github.com/Mengzuozhu/annotation-tool">zMz</vendor>
+
+    <description><![CDATA[
+
+    <p><a href="https://github.com/Mengzuozhu/annotation-tool">GitHub</a> |</p>
+    <p>This plugin helps you to navigate to annotation by searching the value of attribute. Use <b>Ctrl+Alt+A</b>. </p>
+
+    <br>
+
+    <br>
+    <p><b>Features</b></p>
+    <p> ● Go to annotation  </p>
+    <br>
+
+    <p>通过搜索注解属性值，快速跳转到对应注解，快捷键<b>Ctrl+Alt+A</b> </p>
+
+    <br>
+
+    ]]></description>
+
+    <idea-version since-build="182"/>
+
+    <depends>com.intellij.modules.java</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <projectService serviceImplementation="github.mengzz.annotation.tool.config.AnnotationNameFilterConfiguration"/>
+        <applicationConfigurable parentId="tools" instance="github.mengzz.annotation.tool.config.ui.ConfigGUI"
+                                 id="github.mengzz.annotation-tool"/>
+        <applicationService serviceImplementation="github.mengzz.annotation.tool.config.AnnotationToolSetting"/>
+    </extensions>
+
+    <actions>
+        <action id="github.mengzz.annotation.tool.action.GotoAnnotationAction"
+                class="github.mengzz.annotation.tool.action.GotoAnnotationAction"
+                text="Go to Annotation" description="Go to Annotation"
+                icon="AllIcons.Actions.Search">
+            <add-to-group group-id="GoToTargetEx" anchor="first"/>
+            <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt A" />
+        </action>
+    </actions>
+</idea-plugin>
