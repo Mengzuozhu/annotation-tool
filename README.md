@@ -6,7 +6,7 @@
 
 :basketball:  The `Annotation Tool` is a plugin that can help you to navigate to annotation by searching the value of attribute.
 
-![useDemo](https://github.com/Mengzuozhu/intellij-fluent-tool/blob/master/demo/useDemo.gif)
+![useDemo](https://github.com/Mengzuozhu/annotation-tool/blob/master/demo/useDemo.gif)
 
 ## **Features**
 
