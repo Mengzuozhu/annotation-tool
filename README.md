@@ -24,4 +24,4 @@
 
 ## Reference
 
-RestfulToolkit: [https://github.com/mrmanzhaow/RestfulToolkit](https://github.com/TwinProduction/intellij-fluent-setter-generator)
+RestfulToolkit: [https://github.com/mrmanzhaow/RestfulToolkit](https://github.com/mrmanzhaow/RestfulToolkit)

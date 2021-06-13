@@ -27,4 +27,4 @@ IntelliJ Java注解插件，通过搜索注解属性值（自定义配置），�
 
 ## 参考
 
-RestfulToolkit: [https://github.com/mrmanzhaow/RestfulToolkit](https://github.com/TwinProduction/intellij-fluent-setter-generator)
+RestfulToolkit: [https://github.com/mrmanzhaow/RestfulToolkit](https://github.com/mrmanzhaow/RestfulToolkit)
