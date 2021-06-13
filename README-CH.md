@@ -6,11 +6,11 @@
 
 IntelliJ Java注解插件，通过搜索注解属性值（自定义配置），快速跳转到对应注解位置。
 
+![useDemo](https://github.com/Mengzuozhu/annotation-tool/blob/main/demo/useDemo.gif)
+
 ## 使用场景
 - 快速跳转到Spring Controller层的注解定义（@RestController, @GetMapping, @PostMapping等等）
 - RPC接口注解定义等
-
-![useDemo](https://github.com/Mengzuozhu/annotation-tool/blob/master/demo/useDemo.gif)
 
 ## 功能
 
@@ -22,7 +22,7 @@ IntelliJ Java注解插件，通过搜索注解属性值（自定义配置），�
 
 ## 配置
 
-![config](https://github.com/Mengzuozhu/annotation-tool/blob/master/demo/config.jpg)
+![config](https://github.com/Mengzuozhu/annotation-tool/blob/main/demo/config.png)
 
 ## 参考
 
