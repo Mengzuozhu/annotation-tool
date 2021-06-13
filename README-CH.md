@@ -1,6 +1,7 @@
 # annotation-tool(IntelliJ IDEA 插件)
 
 [![](https://img.shields.io/github/v/release/Mengzuozhu/annotation-tool)](https://github.com/Mengzuozhu/annotation-tool/releases)
+[![Annotation Tool Plugins](https://img.shields.io/jetbrains/plugin/v/17007-annotation-tool.svg)](https://plugins.jetbrains.com/plugin/17007-annotation-tool)  
 
 <a href="README.md">English Document</a>  
 

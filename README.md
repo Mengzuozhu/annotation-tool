@@ -1,6 +1,7 @@
 # annotation-tool
 
 [![](https://img.shields.io/github/v/release/Mengzuozhu/annotation-tool)](https://github.com/Mengzuozhu/annotation-tool/releases)
+[![Annotation Tool Plugins](https://img.shields.io/jetbrains/plugin/v/17007-annotation-tool.svg)](https://plugins.jetbrains.com/plugin/17007-annotation-tool)  
 
 <a href="README-CH.md">中文文档</a>
 
