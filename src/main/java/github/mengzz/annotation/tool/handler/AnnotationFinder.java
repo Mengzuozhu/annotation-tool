@@ -9,10 +9,7 @@ import github.mengzz.annotation.tool.model.AnnotationInfo;
 import github.mengzz.annotation.tool.model.AnnotationItem;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * The type Annotation finder.
@@ -26,21 +23,20 @@ public class AnnotationFinder {
 
         GlobalSearchScope globalSearchScope = GlobalSearchScope.projectScope(project);
         List<AnnotationItem> itemList = new ArrayList<>();
-        Map<String, List<String>> annotationAndProperties =
+        Map<String, Set<String>> annotationAndAttributes =
                 AnnotationToolSetting.getInstance().getAnnotationAndAttributes();
 
-        for (Map.Entry<String, List<String>> entry : annotationAndProperties.entrySet()) {
+        for (Map.Entry<String, Set<String>> entry : annotationAndAttributes.entrySet()) {
             String annotationName = entry.getKey();
             Collection<PsiAnnotation> psiAnnotations = JavaAnnotationIndex.getInstance().get(annotationName, project,
                     globalSearchScope);
             AnnotationInfo annotationInfo = AnnotationInfo.instanceOf(annotationName);
-            List<String> attrs = entry.getValue();
             for (PsiAnnotation psiAnnotation : psiAnnotations) {
                 PsiElement psiElement = psiAnnotation.getParent().getParent();
-                for (String attr : attrs) {
-                    List<String> values = getAnnotationAttributeValues(psiAnnotation, attr);
+                for (String attribute : entry.getValue()) {
+                    List<String> values = getAnnotationAttributeValues(psiAnnotation, attribute);
                     for (String value : values) {
-                        AnnotationItem item = new AnnotationItem(psiElement, value, annotationInfo, attr);
+                        AnnotationItem item = new AnnotationItem(psiElement, value, annotationInfo, attribute);
                         itemList.add(item);
                     }
                 }

@@ -12,6 +12,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.swing.*;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -35,7 +36,7 @@ class GotoAnnotationFilter extends ChooseByNameFilter<AnnotationInfo> {
     @Override
     @NotNull
     protected List<AnnotationInfo> getAllFilterValues() {
-        Map<String, List<String>> annotationAndProperties =
+        Map<String, Set<String>> annotationAndProperties =
                 AnnotationToolSetting.getInstance().getAnnotationAndAttributes();
         return annotationAndProperties.keySet()
                 .stream()
