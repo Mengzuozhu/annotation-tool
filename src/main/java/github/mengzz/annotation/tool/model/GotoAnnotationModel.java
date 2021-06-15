@@ -40,6 +40,16 @@ public class GotoAnnotationModel extends FilteringGotoByModel<AnnotationInfo> im
         return null;
     }
 
+    /**
+     * Only for compatibility problem
+     *
+     * @return the check box mnemonic
+     */
+    @Override
+    public char getCheckBoxMnemonic() {
+        return 0;
+    }
+
     @Override
     public boolean loadInitialCheckBoxState() {
         return false;
