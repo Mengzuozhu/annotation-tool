@@ -97,7 +97,7 @@ public class AnnotationItem implements NavigationItem {
         @Nullable
         @Override
         public Icon getIcon(boolean unused) {
-            return psiElement.getIcon(Iconable.ICON_FLAG_VISIBILITY);
+            return psiElement.getIcon(Iconable.ICON_FLAG_VISIBILITY | Iconable.ICON_FLAG_READ_STATUS);
         }
     }
 }
