@@ -86,11 +86,11 @@ public class AnnotationItem implements NavigationItem {
             PsiMember psiMember = (PsiMember) psiElement;
             PsiClass psiClass = psiMember.getContainingClass();
             if (psiClass != null) {
-                refer = MessageFormat.format("{0}.{1}", psiClass.getName(),
+                refer = MessageFormat.format("{0}.{1}", psiClass.getQualifiedName(),
                         psiMember.getName());
             } else if (psiElement instanceof PsiClass) {
                 psiClass = (PsiClass) psiElement;
-                refer = psiClass.getName();
+                refer = psiClass.getQualifiedName();
             }
             if (refer != null) {
                 return MessageFormat.format("{0}::@{1}.{2}", refer, annotationInfo.getUniqueName(),
