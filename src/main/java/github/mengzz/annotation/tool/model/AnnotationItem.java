@@ -2,6 +2,7 @@ package github.mengzz.annotation.tool.model;
 
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.navigation.NavigationItem;
+import com.intellij.openapi.util.Iconable;
 import com.intellij.pom.Navigatable;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiElement;
@@ -96,7 +97,7 @@ public class AnnotationItem implements NavigationItem {
         @Nullable
         @Override
         public Icon getIcon(boolean unused) {
-            return null;
+            return psiElement.getIcon(Iconable.ICON_FLAG_VISIBILITY);
         }
     }
 }
