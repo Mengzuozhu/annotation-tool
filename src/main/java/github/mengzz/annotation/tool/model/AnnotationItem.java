@@ -1,10 +1,15 @@
 package github.mengzz.annotation.tool.model;
 
+import com.intellij.navigation.ColoredItemPresentation;
 import com.intellij.navigation.ItemPresentation;
 import com.intellij.navigation.NavigationItem;
+import com.intellij.openapi.editor.colors.CodeInsightColors;
+import com.intellij.openapi.editor.colors.TextAttributesKey;
+import com.intellij.openapi.project.IndexNotReadyException;
 import com.intellij.openapi.util.Iconable;
 import com.intellij.pom.Navigatable;
 import com.intellij.psi.PsiClass;
+import com.intellij.psi.PsiDocCommentOwner;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiMethod;
 import org.jetbrains.annotations.Nullable;
@@ -19,7 +24,8 @@ public class AnnotationItem implements NavigationItem {
     private AnnotationInfo annotationInfo;
     private Navigatable navigationElement;
 
-    public AnnotationItem(PsiElement psiElement, String attrValue, AnnotationInfo annotationInfo, String attributeName) {
+    public AnnotationItem(PsiElement psiElement, String attrValue, AnnotationInfo annotationInfo,
+                          String attributeName) {
         this.psiElement = psiElement;
         this.annotationInfo = annotationInfo;
         this.attrValue = attrValue;
@@ -62,7 +68,7 @@ public class AnnotationItem implements NavigationItem {
         return annotationInfo;
     }
 
-    private class RestServiceItemPresentation implements ItemPresentation {
+    private class RestServiceItemPresentation implements ColoredItemPresentation {
         @Nullable
         @Override
         public String getPresentableText() {
@@ -88,7 +94,8 @@ public class AnnotationItem implements NavigationItem {
 
             String location = null;
             if (refer != null) {
-                location = MessageFormat.format("({0}::@{1}.{2})", refer, annotationInfo.getUniqueName(), attributeName);
+                location = MessageFormat.format("({0}::@{1}.{2})", refer, annotationInfo.getUniqueName(),
+                        attributeName);
             }
 
             return location;
@@ -98,6 +105,19 @@ public class AnnotationItem implements NavigationItem {
         @Override
         public Icon getIcon(boolean unused) {
             return psiElement.getIcon(Iconable.ICON_FLAG_VISIBILITY | Iconable.ICON_FLAG_READ_STATUS);
+        }
+
+        @Override
+        public @Nullable TextAttributesKey getTextAttributesKey() {
+            try {
+                PsiDocCommentOwner commentOwner = psiElement instanceof PsiDocCommentOwner ?
+                        ((PsiDocCommentOwner) psiElement) : null;
+                if (commentOwner != null && commentOwner.isDeprecated()) {
+                    return CodeInsightColors.DEPRECATED_ATTRIBUTES;
+                }
+            } catch (IndexNotReadyException ignore) {
+            }
+            return null;
         }
     }
 }
