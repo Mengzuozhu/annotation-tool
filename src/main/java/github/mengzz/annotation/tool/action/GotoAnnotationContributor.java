@@ -28,7 +28,7 @@ public class GotoAnnotationContributor implements ChooseByNameContributor {
     @NotNull
     @Override
     public NavigationItem[] getItemsByName(String name, String pattern, Project project,
-                                           boolean onlyThisModuleChecked) {
+                                           boolean includeNonProjectItems) {
         return annotationItems.stream()
                 .filter(item -> Objects.equals(item.getName(), name))
                 .toArray(NavigationItem[]::new);
