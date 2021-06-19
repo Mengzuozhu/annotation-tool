@@ -86,7 +86,6 @@ public class GotoAnnotationModel extends FilteringGotoByModel<AnnotationInfo> im
     @Override
     protected AnnotationInfo filterValueFor(NavigationItem item) {
         return item instanceof AnnotationItem ? ((AnnotationItem) item).getAnnotationInfo() : null;
-
     }
 
 

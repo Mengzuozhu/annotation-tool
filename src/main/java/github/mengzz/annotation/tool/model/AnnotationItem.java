@@ -45,7 +45,7 @@ public class AnnotationItem implements NavigationItem {
     @Nullable
     @Override
     public ItemPresentation getPresentation() {
-        return new RestServiceItemPresentation();
+        return new AnnotationItemPresentation();
     }
 
     @Override
@@ -69,7 +69,7 @@ public class AnnotationItem implements NavigationItem {
         return annotationInfo;
     }
 
-    private class RestServiceItemPresentation implements ColoredItemPresentation, ItemPresentationWithSeparator {
+    private class AnnotationItemPresentation implements ColoredItemPresentation, ItemPresentationWithSeparator {
         @Nullable
         @Override
         public String getPresentableText() {
@@ -86,11 +86,9 @@ public class AnnotationItem implements NavigationItem {
             PsiMember psiMember = (PsiMember) psiElement;
             PsiClass psiClass = psiMember.getContainingClass();
             if (psiClass != null) {
-                refer = MessageFormat.format("{0}.{1}", psiClass.getQualifiedName(),
-                        psiMember.getName());
+                refer = MessageFormat.format("{0}.{1}", getName(psiClass), psiMember.getName());
             } else if (psiElement instanceof PsiClass) {
-                psiClass = (PsiClass) psiElement;
-                refer = psiClass.getQualifiedName();
+                refer = getName((PsiClass) psiElement);
             }
             if (refer != null) {
                 return MessageFormat.format("{0}::@{1}.{2}", refer, annotationInfo.getUniqueName(),
@@ -98,6 +96,11 @@ public class AnnotationItem implements NavigationItem {
             }
 
             return null;
+        }
+
+        @Nullable
+        private String getName(PsiClass psiClass) {
+            return psiClass.getQualifiedName();
         }
 
         @Nullable
