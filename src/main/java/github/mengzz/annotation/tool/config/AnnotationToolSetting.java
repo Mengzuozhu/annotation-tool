@@ -31,6 +31,8 @@ public class AnnotationToolSetting implements PersistentStateComponent<Annotatio
     private List<AnnotationConfig> annotationConfigs;
     @Getter
     private String defaultAttrValue = "value";
+    @Getter
+    private boolean enableQualifiedName = false;
 
     public static AnnotationToolSetting getInstance() {
         return ServiceManager.getService(AnnotationToolSetting.class);

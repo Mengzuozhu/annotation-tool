@@ -13,13 +13,13 @@
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties/>
-        <border type="line" title="Annotation Config">
+        <border type="none" title="Annotation Config">
           <size top="3" left="3" bottom="3" right="3"/>
           <color color="-16777216"/>
         </border>
         <children/>
       </grid>
-      <grid id="22c7f" binding="generalPanel" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="true" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="22c7f" binding="generalPanel" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="7" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
@@ -48,6 +48,14 @@
             <properties>
               <horizontalAlignment value="10"/>
               <text value=""/>
+            </properties>
+          </component>
+          <component id="a4c40" class="javax.swing.JCheckBox" binding="enableQualifiedNameChb">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="Show Qualified Name"/>
             </properties>
           </component>
         </children>

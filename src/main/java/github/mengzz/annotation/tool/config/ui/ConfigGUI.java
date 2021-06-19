@@ -27,6 +27,7 @@ public class ConfigGUI extends JPanel implements SearchableConfigurable {
     private JPanel generalPanel;
 
     private JTextField defaultAttrValueText;
+    private JCheckBox enableQualifiedNameChb;
 
     public ConfigGUI() {
         super();
@@ -47,19 +48,22 @@ public class ConfigGUI extends JPanel implements SearchableConfigurable {
     @Override
     public boolean isModified() {
         return !tableDecorator.getAnnotationConfigs().equals(settings.getAnnotationConfigs())
-                || !settings.getDefaultAttrValue().equals(defaultAttrValueText.getText());
+                || !settings.getDefaultAttrValue().equals(defaultAttrValueText.getText())
+                || settings.isEnableQualifiedName() != (enableQualifiedNameChb.isSelected());
     }
 
     @Override
     public void apply() {
         settings.setAnnotationConfigs(ListUtil.copy(tableDecorator.getAnnotationConfigs(), AnnotationConfig.class));
         settings.setDefaultAttrValue(defaultAttrValueText.getText());
+        settings.setEnableQualifiedName(enableQualifiedNameChb.isSelected());
     }
 
     @Override
     public void reset() {
         tableDecorator.reset(settings.getAnnotationConfigs());
         defaultAttrValueText.setText(settings.getDefaultAttrValue());
+        enableQualifiedNameChb.setSelected(settings.isEnableQualifiedName());
     }
 
     @Override
