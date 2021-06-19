@@ -34,6 +34,10 @@ intellij {
 }
 patchPluginXml {
     changeNotes """
+      <b>1.2</b> <br>
+      <em> ● Support config show qualified name </em><br>
+      <br>
+      
       <b>1.0</b> <br>
       <em> ● Support go to annotation </em><br>
       <br>
