@@ -11,7 +11,7 @@ import com.intellij.openapi.util.Iconable;
 import com.intellij.pom.Navigatable;
 import com.intellij.psi.PsiDocCommentOwner;
 import com.intellij.psi.PsiElement;
-import github.mengzz.annotation.tool.handler.LocationStringBuilder;
+import github.mengzz.annotation.tool.handler.LocationBuilder;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
@@ -105,7 +105,7 @@ public class AnnotationItem implements NavigationItem {
 
         @Nullable
         private String buildLocationString() {
-            String refer = LocationStringBuilder.buildLocationString(psiElement);
+            String refer = LocationBuilder.buildLocationString(psiElement);
             if (refer != null) {
                 return MessageFormat.format("{0}::@{1}.{2}", refer, annotationInfo.getUniqueName(),
                         attributeName);

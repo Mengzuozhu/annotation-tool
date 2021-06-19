@@ -11,7 +11,7 @@ import java.text.MessageFormat;
 /**
  * @author mengzz
  **/
-public class LocationStringBuilder {
+public class LocationBuilder {
     private static AnnotationToolSetting settings = AnnotationToolSetting.getInstance();
 
     @Nullable
