@@ -16,6 +16,7 @@ import java.util.*;
 
 /**
  * The type Annotation finder.
+ * @author Mengzz
  */
 public class AnnotationFinder {
 
@@ -48,11 +49,11 @@ public class AnnotationFinder {
                 }
 
                 // 获取类的注解属性值
-                List<String> clazzValues = getClazzValues(classAnnotation, classAttr, psiElement);
+                List<String> clazzAttributeValues = getClazzAttributeValues(classAnnotation, classAttr, psiElement);
                 List<String> values = getAnnotationAttributeValues(psiAnnotation, attribute);
                 for (String value : values) {
-                    if (clazzValues != null) {
-                        for (String clazzValue : clazzValues) {
+                    if (clazzAttributeValues != null) {
+                        for (String clazzValue : clazzAttributeValues) {
                             value = clazzValue + value;
                             AnnotationItem item = new AnnotationItem(psiElement, value, annotationInfo, attribute);
                             itemList.add(item);
@@ -68,8 +69,17 @@ public class AnnotationFinder {
         return itemList;
     }
 
+    /**
+     * Gets clazz values.
+     *
+     * @param classAnnotation the class annotation
+     * @param classAttr       the class attr
+     * @param psiElement      the psi element
+     * @return the clazz values
+     */
     @Nullable
-    private static List<String> getClazzValues(String classAnnotation, String classAttr, PsiElement psiElement) {
+    private static List<String> getClazzAttributeValues(String classAnnotation, String classAttr,
+                                                        PsiElement psiElement) {
         List<String> clazzValues = null;
         PsiElement parent = psiElement.getParent();
         if (parent instanceof PsiClass) {
