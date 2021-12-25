@@ -17,7 +17,6 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
@@ -38,11 +37,10 @@ public class AnnotationToolSetting implements PersistentStateComponent<Annotatio
         return ServiceManager.getService(AnnotationToolSetting.class);
     }
 
-    public Map<String, Set<String>> getAnnotationAndAttributes() {
+    public Map<String, AnnotationConfig> getAnnotationAndAttributes() {
         // distinct
-        return getAnnotationConfigs().stream()
-                .collect(Collectors.groupingBy(AnnotationConfig::getAnnotation,
-                        Collectors.mapping(AnnotationConfig::getAttribute, Collectors.toSet())));
+        return getAnnotationConfigs().stream().collect(Collectors.toMap(AnnotationConfig::toString, e -> e,
+                (old, cur) -> cur));
     }
 
     public List<AnnotationConfig> getAnnotationConfigs() {

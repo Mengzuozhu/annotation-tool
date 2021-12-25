@@ -5,6 +5,7 @@ import com.intellij.ide.util.gotoByName.ChooseByNamePopup;
 import com.intellij.openapi.project.Project;
 import github.mengzz.annotation.tool.config.AnnotationNameFilterConfiguration;
 import github.mengzz.annotation.tool.config.AnnotationToolSetting;
+import github.mengzz.annotation.tool.model.AnnotationConfig;
 import github.mengzz.annotation.tool.model.AnnotationInfo;
 import github.mengzz.annotation.tool.model.GotoAnnotationModel;
 import org.jetbrains.annotations.NotNull;
@@ -36,7 +37,7 @@ class GotoAnnotationFilter extends ChooseByNameFilter<AnnotationInfo> {
     @Override
     @NotNull
     protected List<AnnotationInfo> getAllFilterValues() {
-        Map<String, Set<String>> annotationAndProperties =
+        Map<String, AnnotationConfig> annotationAndProperties =
                 AnnotationToolSetting.getInstance().getAnnotationAndAttributes();
         return annotationAndProperties.keySet()
                 .stream()

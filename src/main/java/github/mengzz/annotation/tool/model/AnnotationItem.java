@@ -12,6 +12,7 @@ import com.intellij.pom.Navigatable;
 import com.intellij.psi.PsiDocCommentOwner;
 import com.intellij.psi.PsiElement;
 import github.mengzz.annotation.tool.handler.LocationBuilder;
+import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.Nullable;
 
 import javax.swing.*;
@@ -23,16 +24,16 @@ import java.text.MessageFormat;
 public class AnnotationItem implements NavigationItem {
     private PsiElement psiElement;
     private String attrValue;
-    private String attributeName;
+    private AnnotationConfig annotationConfig;
     private AnnotationInfo annotationInfo;
     private Navigatable navigationElement;
 
     public AnnotationItem(PsiElement psiElement, String attrValue, AnnotationInfo annotationInfo,
-                          String attributeName) {
+                          AnnotationConfig annotationConfig) {
         this.psiElement = psiElement;
         this.annotationInfo = annotationInfo;
         this.attrValue = attrValue;
-        this.attributeName = attributeName;
+        this.annotationConfig = annotationConfig;
         if (psiElement instanceof Navigatable) {
             navigationElement = (Navigatable) psiElement;
         }
@@ -107,8 +108,15 @@ public class AnnotationItem implements NavigationItem {
         private String buildLocationString() {
             String refer = LocationBuilder.buildLocationString(psiElement);
             if (refer != null) {
-                return MessageFormat.format("{0}::@{1}.{2}", refer, annotationInfo.getUniqueName(),
-                        attributeName);
+                String classAnnotation = annotationConfig.getClassAnnotation();
+                String classAttribute = annotationConfig.getClassAttribute();
+                if (StringUtils.isNotBlank(classAnnotation) && StringUtils.isNotBlank(classAttribute)) {
+                    return MessageFormat.format("{0}::@{1}.{2}+@{3}.{4}", refer,
+                            classAnnotation, classAttribute,
+                            annotationConfig.getAnnotation(), annotationConfig.getAttribute());
+                }
+                return MessageFormat.format("{0}::@{1}.{2}", refer,
+                        annotationConfig.getAnnotation(), annotationConfig.getAttribute());
             }
             return null;
         }

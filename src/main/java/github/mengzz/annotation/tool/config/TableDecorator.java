@@ -50,7 +50,9 @@ public class TableDecorator {
         if (cellEditor != null) {
             cellEditor.stopCellEditing();
         }
-        annotationConfigs.add(new AnnotationConfig("", AnnotationToolSetting.getInstance().getDefaultAttrValue()));
+        AnnotationConfig config = new AnnotationConfig("", AnnotationToolSetting.getInstance().getDefaultAttrValue(),
+                "", "");
+        annotationConfigs.add(config);
         customTableModel.fireTableDataChanged();
         TableUtil.editCellAt(jTable, customTableModel.getRowCount() - 1, 0);
     }
@@ -100,7 +102,7 @@ public class TableDecorator {
 
         @Override
         public int getColumnCount() {
-            return 2;
+            return 4;
         }
 
         @Override
