@@ -32,8 +32,15 @@ public class AnnotationFinder {
                     globalSearchScope);
             AnnotationInfo annotationInfo = AnnotationInfo.instanceOf(annotationName);
             for (PsiAnnotation psiAnnotation : psiAnnotations) {
-                PsiElement psiElement = psiAnnotation.getParent().getParent();
-                for (String attribute : entry.getValue()) {
+                PsiElement psiElement = Optional.ofNullable(psiAnnotation.getParent())
+                        .map(PsiElement::getParent)
+                        .orElse(null);
+                if (psiElement == null) {
+                    continue;
+                }
+
+                Set<String> attributes = entry.getValue();
+                for (String attribute : attributes) {
                     List<String> values = getAnnotationAttributeValues(psiAnnotation, attribute);
                     for (String value : values) {
                         AnnotationItem item = new AnnotationItem(psiElement, value, annotationInfo, attribute);
