@@ -31,11 +31,11 @@ public class AnnotationFinder {
                 AnnotationToolSetting.getInstance().getAnnotationAndAttributes();
 
         for (Map.Entry<String, AnnotationConfig> entry : annotationAndAttributes.entrySet()) {
-            AnnotationConfig configs = entry.getValue();
-            String annotation = configs.getAnnotation();
-            String attribute = configs.getAttribute();
-            String classAnnotation = configs.getClassAnnotation();
-            String classAttr = configs.getClassAttribute();
+            AnnotationConfig config = entry.getValue();
+            String annotation = config.getAnnotation();
+            String attribute = config.getAttribute();
+            String classAnnotation = config.getClassAnnotation();
+            String classAttr = config.getClassAttribute();
 
             Collection<PsiAnnotation> psiAnnotations = JavaAnnotationIndex.getInstance().get(annotation, project,
                     globalSearchScope);
@@ -55,11 +55,11 @@ public class AnnotationFinder {
                     if (clazzAttributeValues != null) {
                         for (String clazzValue : clazzAttributeValues) {
                             value = clazzValue + value;
-                            AnnotationItem item = new AnnotationItem(psiElement, value, annotationInfo, attribute);
+                            AnnotationItem item = new AnnotationItem(psiElement, value, annotationInfo, config);
                             itemList.add(item);
                         }
                     } else {
-                        AnnotationItem item = new AnnotationItem(psiElement, value, annotationInfo, attribute);
+                        AnnotationItem item = new AnnotationItem(psiElement, value, annotationInfo, config);
                         itemList.add(item);
                     }
                 }
